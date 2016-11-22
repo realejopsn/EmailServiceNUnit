@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Moq;
+using Moq.Properties;
+using Rhino.Mocks;
 
 namespace EmailService.Test
 {
@@ -57,6 +60,23 @@ namespace EmailService.Test
         {
             string expectedResult = testSubject.sendPeriodicNotification("Test", "Monthly", "23 3:50");
             Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
+        }
+
+        [Test]
+        public void ShouldsendPeriodicNotification()
+        {
+            var expectedResult = new Mock<Notification>();
+            expectedResult.Setup(t => t.periodicNotification).Returns("Notification was send it");
+            string test = testSubject.sendPeriodicNotification("Test", "Monthly", "23 3:50");
+            expectedResult.Verify(p => test);
+        }
+
+        [Test]
+        public void shouldWriteOnTheProgramFile()
+        {
+            var expectedResult = new Mock<Notification>();
+            expectedResult.Setup(test => test.sendPeriodicNotification("Test", "Monthly", "23 3:50")).Returns("Notification was send it");
+            
         }
 
     }

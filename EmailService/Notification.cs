@@ -48,7 +48,7 @@ namespace EmailService
         {
             DateTime localDate = DateTime.Now;
             string logText = "Monthly Notification: "+notificationText +", at: " + Time;
-            Logger(logText);
+            ErrorLogger(logText);
             return sendNotification(notificationText);
         }
         
@@ -57,7 +57,7 @@ namespace EmailService
         {
             DateTime localDate = DateTime.Now;
             string logText = "Weekly Notification: " + notificationText + ", at: " + Time;
-            Logger(logText);
+            ProgramLogger(logText);
             return sendNotification(notificationText);
         }
 
@@ -65,7 +65,7 @@ namespace EmailService
         {
             DateTime localDate = DateTime.Now;
             string logText = "Daily Notification: " + notificationText + ", at: " + Time;
-            Logger(logText);
+            ProgramLogger(logText);
             return sendNotification(notificationText);
         }
 
@@ -80,10 +80,19 @@ namespace EmailService
             return "Notification was send it";
         }
 
-        public void Logger(String lines)
+        public void ProgramLogger(String lines)
         {            
             string location = Directory.GetCurrentDirectory();
             System.IO.StreamWriter file = new System.IO.StreamWriter(location + "NotificationControl.txt", true);
+            file.WriteLine(lines);
+
+            file.Close();
+        }
+
+        public void ErrorLogger(String lines)
+        {
+            string location = Directory.GetCurrentDirectory();
+            System.IO.StreamWriter file = new System.IO.StreamWriter(location + "ErrorControl.txt", true);
             file.WriteLine(lines);
 
             file.Close();
