@@ -41,19 +41,22 @@ namespace EmailService.Test
         [Test]
         public void ShouldSendPeriodicDailyNotification()
         {
-
+            string expectedResult = testSubject.sendPeriodicNotification("Test", "Monthly", "3:50");
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicWeeklyNotification()
         {
-
+            string expectedResult = testSubject.sendPeriodicNotification("Test", "Weekly", "23 3:50");
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicMonthlyNotification()
         {
-
+            string expectedResult = testSubject.sendPeriodicNotification("Test", "Monthly", "23 3:50");
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
         }
 
     }

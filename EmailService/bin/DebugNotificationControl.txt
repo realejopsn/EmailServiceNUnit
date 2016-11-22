@@ -1,2 +1,2 @@
-Test3:40
-Test3:50
+Monthly Notification: Test at: 3:50
+Monthly Notification: Test at: 3:50

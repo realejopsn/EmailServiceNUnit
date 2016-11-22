@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using System.IO;
 
 namespace EmailService
 {
     class Notification
     {
-        string source;
-        string log;
-        string eventLog;
         private String _periodicNotification;
         private String _eventualNotification;
 
@@ -51,11 +47,8 @@ namespace EmailService
         private string sendMonthlyNotification(String notificationText, String configuration, String Time)
         {
             DateTime localDate = DateTime.Now;
-            string logText = notificationText + Time;
+            string logText = "Monthly Notification: "+notificationText +", at: " + Time;
             Logger(logText);
-
-
-
             return sendNotification(notificationText);
         }
         
@@ -63,20 +56,16 @@ namespace EmailService
         private string sendWeeklyNotification(String notificationText, String configuration, String Time)
         {
             DateTime localDate = DateTime.Now;
-            
-            source = "Perodic Notification on: " + configuration.ToLower() + "on date: " + localDate;
-            eventLog = Time;
-            EventLog.WriteEntry(source, eventLog);
+            string logText = "Weekly Notification: " + notificationText + ", at: " + Time;
+            Logger(logText);
             return sendNotification(notificationText);
         }
 
         private string sendDailyNotification(String notificationText, String configuration, String Time)
         {
             DateTime localDate = DateTime.Now;
-            
-            source = "Perodic Notification on: " + configuration.ToLower() + "on date: " + localDate;
-            eventLog = Time;
-            EventLog.WriteEntry(source, eventLog);
+            string logText = "Daily Notification: " + notificationText + ", at: " + Time;
+            Logger(logText);
             return sendNotification(notificationText);
         }
 
@@ -98,7 +87,6 @@ namespace EmailService
             file.WriteLine(lines);
 
             file.Close();
-
         }
 
     }
