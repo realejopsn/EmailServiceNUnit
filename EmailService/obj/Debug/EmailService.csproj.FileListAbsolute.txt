@@ -1,0 +1,8 @@
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EmailService.exe.config
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EmailService.exe
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EmailService.pdb
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\nunit.framework.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\nunit.framework.xml
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\obj\Debug\EmailService.csprojResolveAssemblyReference.cache
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\obj\Debug\EmailService.exe
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\obj\Debug\EmailService.pdb
