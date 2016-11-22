@@ -11,9 +11,10 @@ namespace EmailService
         static void Main(string[] args)
         {
             Notification NewNotification = new Notification();
-            
-            
-            Console.WriteLine(NewNotification.sendEventualNotification("This is a test"));
+
+
+            //Console.WriteLine(NewNotification.sendEventualNotification("This is a test"));
+            Console.WriteLine(NewNotification.sendPeriodicNotification("Test", "Monthly", "3:50"));
             Console.ReadKey();
         }
     }

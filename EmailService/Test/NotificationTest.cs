@@ -31,10 +31,29 @@ namespace EmailService.Test
             Assert.That(expectedResult, Is.EqualTo(""));
         }
 
+        [Test]
         public void ShouldSendEventualNotification()
         {
             string expectedResult = testSubject.sendEventualNotification("Test Notification");
             Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
+        }
+
+        [Test]
+        public void ShouldSendPeriodicDailyNotification()
+        {
+
+        }
+
+        [Test]
+        public void ShouldSendPeriodicWeeklyNotification()
+        {
+
+        }
+
+        [Test]
+        public void ShouldSendPeriodicMonthlyNotification()
+        {
+
         }
 
     }
