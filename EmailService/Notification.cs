@@ -9,17 +9,25 @@ namespace EmailService
 {
     class Notification
     {
-        private String _periodicNotification;
         private String _eventualNotification;
+        private String _peridicalNotification;
 
         public Notification()
         {
-            _periodicNotification = "";
-            _eventualNotification = "";            
+            _eventualNotification = "";
+            _peridicalNotification = "";
+
         }
 
-        public String periodicNotification { get { return _periodicNotification; } set { _periodicNotification = value; } }
-        public String eventualNotification { get { return _eventualNotification; } set { _eventualNotification = value; } }
+        public String EventualNotification { get { return _eventualNotification; } set { _eventualNotification = value; } }
+        public String periodicNotification { get { return _peridicalNotification; } set { _peridicalNotification = value; } }
+
+        public string sendEventualNotification(String notificationText)
+        {            
+            _eventualNotification = notificationText;
+
+            return "Notification was send it";
+        }
 
         public string sendPeriodicNotification(String notificationText, String configuration, String Time, Nullable<Byte> day = null)
         {              
@@ -55,7 +63,11 @@ namespace EmailService
                 return sendNotification(notificationText);
             }
 
-            return "Notification was not send it";
+            else
+            {
+                ErrorLogger(notificationText);
+                return "Notification was not send it";
+            }
         }
         
 
@@ -70,7 +82,11 @@ namespace EmailService
                 return sendNotification(notificationText);
             }
 
-            return "Notification was not send it";
+            else
+            {
+                ErrorLogger(notificationText);
+                return "Notification was not send it";
+            }
         }
 
         private string sendDailyNotification(String notificationText, String configuration, String Time)
@@ -83,20 +99,19 @@ namespace EmailService
                 ProgramLogger(logText);
                 return sendNotification(notificationText);
             }
+            else
+            {
+                ErrorLogger(notificationText);
+                return "Notification was not send it";
+            }
 
-            return "Notification was not send it";
-        }
-
-        public string sendEventualNotification(String notificationText)
-        {
-            _eventualNotification = notificationText;
-            return sendNotification(_eventualNotification);
+            
         }
 
         public String sendNotification(String notification)
-        {
+        {            
             Random random = new Random();
-            int ran = random.Next(0,2);
+            int ran = random.Next(0, 1);
             bool notificationWasSendIt = ran == 1 ? true : false;
             if (notificationWasSendIt)
             {
@@ -106,8 +121,7 @@ namespace EmailService
             {
                 ErrorLogger(notification);
                 return "Notification was not send it";
-            }
-            
+            }                   
         }
 
         public void ProgramLogger(String lines)

@@ -21,19 +21,12 @@ namespace EmailService.Test
         }
 
         [Test]
-        public void ShouldCreatePeriodicNotificationOnEmpty()
+        public void ShouldCreateNotificationTextOnEmpty()
         {
-            string expectedResult = testSubject.periodicNotification;
+            string expectedResult = testSubject.EventualNotification;
             Assert.That(expectedResult, Is.EqualTo(""));
         }
-
-        [Test]
-        public void ShouldCreateEventualNotificationOnEmpty()
-        {
-            string expectedResult = testSubject.eventualNotification;
-            Assert.That(expectedResult, Is.EqualTo(""));
-        }
-
+                
         [Test]
         public void ShouldSendEventualNotification()
         {
@@ -44,21 +37,21 @@ namespace EmailService.Test
         [Test]
         public void ShouldSendPeriodicDailyNotification()
         {
-            string expectedResult = testSubject.sendPeriodicNotification("Test", "Monthly", "3:50");
+            string expectedResult = testSubject.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22);
             Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicWeeklyNotification()
         {
-            string expectedResult = testSubject.sendPeriodicNotification("Test", "Weekly", "23 3:50");
+            string expectedResult = testSubject.sendPeriodicNotification("Test", "weekly", "8:18 PM", 22);
             Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicMonthlyNotification()
         {
-            string expectedResult = testSubject.sendPeriodicNotification("Test", "Monthly", "23 3:50");
+            string expectedResult = testSubject.sendPeriodicNotification("Test", "dayly", "8:18 PM");
             Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
         }
 
@@ -67,7 +60,7 @@ namespace EmailService.Test
         {
             var expectedResult = new Mock<Notification>();
             expectedResult.Setup(t => t.periodicNotification).Returns("Notification was send it");
-            string test = testSubject.sendPeriodicNotification("Test", "Monthly", "23 3:50");
+            string test = testSubject.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22);
             expectedResult.Verify(p => test);
         }
 
@@ -75,9 +68,18 @@ namespace EmailService.Test
         public void shouldWriteOnTheProgramFile()
         {
             var expectedResult = new Mock<Notification>();
-            expectedResult.Setup(test => test.sendPeriodicNotification("Test", "Monthly", "3:50",23)).Returns("Notification was send it");
-            
+            expectedResult.Setup(test => test.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22)).Returns("Notification was send it");
+            testSubject.sendNotification("Test");
         }
+
+        [Test]
+        public void shouldSendNotificationOrFail()
+        {
+            string expectedResult = testSubject.sendNotification("Test");
+            Assert.That((testSubject.sendNotification("Test") == "Notification was send it" || testSubject.sendNotification("Test") == "Notification was not send it") ? true : false, "Failed");
+        }
+
+        [Test]
 
     }
 }
