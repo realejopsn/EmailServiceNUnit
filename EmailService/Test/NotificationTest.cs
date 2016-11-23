@@ -75,7 +75,7 @@ namespace EmailService.Test
         public void shouldWriteOnTheProgramFile()
         {
             var expectedResult = new Mock<Notification>();
-            expectedResult.Setup(test => test.sendPeriodicNotification("Test", "Monthly", "23 3:50")).Returns("Notification was send it");
+            expectedResult.Setup(test => test.sendPeriodicNotification("Test", "Monthly", "3:50",23)).Returns("Notification was send it");
             
         }
 

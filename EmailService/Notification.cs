@@ -21,7 +21,7 @@ namespace EmailService
         public String periodicNotification { get { return _periodicNotification; } set { _periodicNotification = value; } }
         public String eventualNotification { get { return _eventualNotification; } set { _eventualNotification = value; } }
 
-        public string sendPeriodicNotification(String notificationText, String configuration, String Time)
+        public string sendPeriodicNotification(String notificationText, String configuration, String Time, Nullable<Byte> day = null)
         {              
                 
             if (configuration.ToLower() == "daily")
@@ -31,12 +31,12 @@ namespace EmailService
             }
             else if (configuration.ToLower() == "weekly")
             {
-                return sendWeeklyNotification(notificationText, configuration, Time);
+                return sendWeeklyNotification(notificationText, configuration, (Byte)day, Time);
                
             }
             else if (configuration.ToLower() == "monthly")
             {
-                return sendMonthlyNotification(notificationText, configuration, Time);                
+                return sendMonthlyNotification(notificationText, configuration, (Byte)day, Time);                
             }
             else
             {
@@ -44,29 +44,47 @@ namespace EmailService
             }
         }
 
-        private string sendMonthlyNotification(String notificationText, String configuration, String Time)
+        private string sendMonthlyNotification(String notificationText, String configuration, Byte day, String Time)
         {
             DateTime localDate = DateTime.Now;
-            string logText = "Monthly Notification: "+notificationText +", at: " + Time;
-            ErrorLogger(logText);
-            return sendNotification(notificationText);
+            String localTime = localDate.ToShortTimeString();
+            if (localDate.Day == day && localTime == Time)
+            {
+                string logText = "Monthly Notification: " + notificationText + ", at: " + day + ' ' + Time;
+                ProgramLogger(logText);
+                return sendNotification(notificationText);
+            }
+
+            return "Notification was not send it";
         }
         
 
-        private string sendWeeklyNotification(String notificationText, String configuration, String Time)
+        private string sendWeeklyNotification(String notificationText, String configuration, Byte day, String Time)
         {
             DateTime localDate = DateTime.Now;
-            string logText = "Weekly Notification: " + notificationText + ", at: " + Time;
-            ProgramLogger(logText);
-            return sendNotification(notificationText);
+            String localTime = localDate.ToShortTimeString();
+            if (localDate.Day == day && localTime == Time)
+            {
+                string logText = "Weekly Notification: " + notificationText + ", at: " + day + ' ' + Time;
+                ProgramLogger(logText);
+                return sendNotification(notificationText);
+            }
+
+            return "Notification was not send it";
         }
 
         private string sendDailyNotification(String notificationText, String configuration, String Time)
         {
             DateTime localDate = DateTime.Now;
-            string logText = "Daily Notification: " + notificationText + ", at: " + Time;
-            ProgramLogger(logText);
-            return sendNotification(notificationText);
+            String localTime = localDate.ToShortTimeString();
+            if(localTime == Time)
+            {
+                string logText = "Daily Notification: " + notificationText + ", at: " + Time;
+                ProgramLogger(logText);
+                return sendNotification(notificationText);
+            }
+
+            return "Notification was not send it";
         }
 
         public string sendEventualNotification(String notificationText)
@@ -77,7 +95,19 @@ namespace EmailService
 
         public String sendNotification(String notification)
         {
-            return "Notification was send it";
+            Random random = new Random();
+            int ran = random.Next(0,2);
+            bool notificationWasSendIt = ran == 1 ? true : false;
+            if (notificationWasSendIt)
+            {
+                return "Notification was send it";
+            }
+            else
+            {
+                ErrorLogger(notification);
+                return "Notification was not send it";
+            }
+            
         }
 
         public void ProgramLogger(String lines)

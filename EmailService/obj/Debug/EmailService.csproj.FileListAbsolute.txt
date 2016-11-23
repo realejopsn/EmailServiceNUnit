@@ -6,3 +6,15 @@ c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\Email
 c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\obj\Debug\EmailService.csprojResolveAssemblyReference.cache
 c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\obj\Debug\EmailService.exe
 c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\obj\Debug\EmailService.pdb
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Castle.Core.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EntityFramework.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\MockEF.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\MockEF.Rhino.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Moq.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Rhino.Mocks.dll
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Castle.Core.xml
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EntityFramework.xml
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Moq.xml
+c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Rhino.Mocks.xml
