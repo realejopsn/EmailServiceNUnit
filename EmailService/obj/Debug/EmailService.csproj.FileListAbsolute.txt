@@ -18,3 +18,23 @@ c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\Email
 c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Moq.xml
 c:\users\reale\onedrive\documents\visual studio 2015\Projects\EmailService\EmailService\bin\Debug\Rhino.Mocks.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EmailService.exe.config
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EmailService.exe
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EmailService.pdb
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\Castle.Core.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EntityFramework.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\MockEF.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\MockEF.Rhino.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\Moq.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\nunit.framework.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\Rhino.Mocks.dll
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\Castle.Core.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EntityFramework.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\Moq.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\nunit.framework.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\bin\Debug\Rhino.Mocks.xml
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\obj\Debug\EmailService.csprojResolveAssemblyReference.cache
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\obj\Debug\EmailService.exe
+C:\Users\kevinah95\Desktop\EmailServiceNUnit\EmailService\obj\Debug\EmailService.pdb

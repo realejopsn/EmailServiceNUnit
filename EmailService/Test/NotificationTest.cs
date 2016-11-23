@@ -31,44 +31,44 @@ namespace EmailService.Test
         public void ShouldSendEventualNotification()
         {
             string expectedResult = testSubject.sendEventualNotification("Test Notification");
-            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it").Or.EqualTo("Notification was not send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicDailyNotification()
         {
             string expectedResult = testSubject.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22);
-            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it").Or.EqualTo("Notification was not send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicWeeklyNotification()
         {
             string expectedResult = testSubject.sendPeriodicNotification("Test", "weekly", "8:18 PM", 22);
-            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it").Or.EqualTo("Notification was not send it"));
         }
 
         [Test]
         public void ShouldSendPeriodicMonthlyNotification()
         {
             string expectedResult = testSubject.sendPeriodicNotification("Test", "dayly", "8:18 PM");
-            Assert.That(expectedResult, Is.EqualTo("Notification was send it"));
+            Assert.That(expectedResult, Is.EqualTo("Notification was send it").Or.EqualTo("Notification was not send it"));
         }
 
         [Test]
         public void ShouldsendPeriodicNotification()
         {
-            var expectedResult = new Mock<Notification>();
-            expectedResult.Setup(t => t.periodicNotification).Returns("Notification was send it");
+            var expectedResult = new Mock<INotification>();
+            expectedResult.Setup(t => t.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22)).Returns("Notification was send it");
             string test = testSubject.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22);
-            expectedResult.Verify(p => test);
+            expectedResult.Verify(p => p.periodicNotification, test);
         }
 
         [Test]
         public void shouldWriteOnTheProgramFile()
         {
-            var expectedResult = new Mock<Notification>();
-            expectedResult.Setup(test => test.sendPeriodicNotification("Test", "monthly", "8:18 PM", 22)).Returns("Notification was send it");
+            var expectedResult = new Mock<INotification>();
+            expectedResult.Setup(test => test.sendPeriodicNotification(It.IsAny<string>(), "monthly", "8:18 PM", 22)).Returns("Notification was send it");
             testSubject.sendNotification("Test");
         }
 
@@ -86,7 +86,7 @@ namespace EmailService.Test
 
             int counter = 0;
             string line;
-            bool exist;
+            bool exist = false;
             var text = "Example of text";
             System.IO.StreamReader file = new System.IO.StreamReader("NotificationControl.txt");
 
@@ -99,8 +99,6 @@ namespace EmailService.Test
                 counter++;
             }
             file.Close();
-
-            exist = false;
 
             Assert.True(exist);
         }
@@ -131,14 +129,14 @@ namespace EmailService.Test
             Assert.True(exist);
         }
 
-
+        [Test]
         public void shouldWriteOnTheNotificationFileOrFailAndWriteOnTheErrorFile()
         {
-            var expectedResult = new Mock<Notification>();
-            expectedResult.Setup(test => test.sendPeriodicNotification("Prueba para fallo o exito", "monthly", "8:18 PM", 22)).Returns("Notification was send it");
+            var expectedResult = new Mock<INotification>();
+            expectedResult.Setup(test => test.sendPeriodicNotification(It.IsAny<string>(), "monthly", "8:18 PM", 22)).Returns("Notification was send it");
 
             int counter = 0;
-            bool exist;
+            bool exist = false;
             var text = "Prueba para fallo o exito";
 
             System.IO.StreamReader success = new System.IO.StreamReader("NotificationControl.txt");
@@ -157,8 +155,6 @@ namespace EmailService.Test
             }
             success.Close();
             error.Close();
-
-            exist = false;
 
             Assert.True(exist);
         }

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace EmailService
 {
-    class Notification
+    class Notification : INotification
     {
         private String _eventualNotification;
         private String _peridicalNotification;
