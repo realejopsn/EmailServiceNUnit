@@ -80,6 +80,97 @@ namespace EmailService.Test
         }
 
         [Test]
+        public void writtingOnNotificationFile()
+        {
+            testSubject.ProgramLogger("Example of text");
+
+            int counter = 0;
+            string line;
+            bool exist;
+            var text = "Example of text";
+            System.IO.StreamReader file = new System.IO.StreamReader("NotificationControl.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.Contains(text))
+                {
+                    exist = true;
+                }
+                counter++;
+            }
+            file.Close();
+
+            exist = false;
+
+            Assert.True(exist);
+        }
+
+        [Test]
+        public void writtingOnErrorFile()
+        {
+            testSubject.ProgramLogger("Example of text");
+
+            int counter = 0;
+            string line;
+            bool exist;
+            var text = "Example of text";
+            System.IO.StreamReader file = new System.IO.StreamReader("ErrorControl.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.Contains(text))
+                {
+                    exist = true;
+                }
+                counter++;
+            }
+            file.Close();
+
+            exist = false;
+
+            Assert.True(exist);
+        }
+
+
+        public void shouldWriteOnTheNotificationFileOrFailAndWriteOnTheErrorFile()
+        {
+            var expectedResult = new Mock<Notification>();
+            expectedResult.Setup(test => test.sendPeriodicNotification("Prueba para fallo o exito", "monthly", "8:18 PM", 22)).Returns("Notification was send it");
+
+            int counter = 0;
+            bool exist;
+            var text = "Prueba para fallo o exito";
+
+            System.IO.StreamReader success = new System.IO.StreamReader("NotificationControl.txt");
+            System.IO.StreamReader error = new System.IO.StreamReader("ErrorControl.txt");
+
+            string successLine = success.ReadLine();
+            string errorLine = success.ReadLine();
+
+            while ((successLine != null || errorLine != null))
+            {
+                if (successLine.Contains(text) || errorLine.Contains(text))
+                {
+                    exist = true;
+                }
+                counter++;
+            }
+            success.Close();
+            error.Close();
+
+            exist = false;
+
+            Assert.True(exist);
+        }
+
+        [OneTimeTearDown]
+        public void TestTearDown()
+        {
+            testSubject = null;
+        }
+
+
+
 
     }
 }
